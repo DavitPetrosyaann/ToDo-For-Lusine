@@ -1,0 +1,6 @@
+{
+  "name": "Lusine's Todo",
+  "description": "A cute pastel & dark mysterious todo list for Lusine (Moon) with customizable styles, fonts, gradients, and category tracking.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
