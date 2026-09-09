@@ -3,6 +3,7 @@ import { PageStyleConfig, Language } from '../types.ts';
 import { DEFAULT_STYLE_CONFIG } from '../data/pageStyles.ts';
 import { TRANSLATIONS } from '../i18n/translations.ts';
 import { ThemeStylePickers } from './ThemeStylePickers.tsx';
+import { useScrollLock } from '../hooks/useScrollLock.ts';
 
 interface StyleSettingsModalProps {
   config: PageStyleConfig;
@@ -13,6 +14,7 @@ interface StyleSettingsModalProps {
 
 export function StyleSettingsModal({ config, onChangeConfig, onClose, lang }: StyleSettingsModalProps) {
   const t = TRANSLATIONS[lang];
+  useScrollLock(true);
 
   const handleUpdate = <K extends keyof PageStyleConfig>(key: K, val: PageStyleConfig[K]) => {
     onChangeConfig({ ...config, [key]: val });
@@ -20,8 +22,8 @@ export function StyleSettingsModal({ config, onChangeConfig, onClose, lang }: St
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-xs">
-      <div className="bg-white dark:bg-gray-900 rounded-3xl p-5 w-full max-w-lg shadow-2xl border border-gray-200 dark:border-gray-800 max-h-[90vh] overflow-y-auto">
-        <div className="flex items-center justify-between pb-3 border-b border-gray-100 dark:border-gray-800">
+      <div className="bg-white dark:bg-gray-900 rounded-3xl w-full max-w-lg shadow-2xl border border-gray-200 dark:border-gray-800 max-h-[90vh] flex flex-col overflow-hidden">
+        <div className="flex items-center justify-between pb-3 border-b border-gray-100 dark:border-gray-800 shrink-0 p-5">
           <div className="flex items-center gap-2">
             <div className="p-2 rounded-2xl bg-teal-100 dark:bg-teal-900/60 text-teal-700 dark:text-teal-300">
               <Sparkles className="w-5 h-5" />
@@ -36,7 +38,7 @@ export function StyleSettingsModal({ config, onChangeConfig, onClose, lang }: St
           </button>
         </div>
 
-        <div className="py-4 space-y-4">
+        <div className="py-4 space-y-4 overflow-y-auto p-5">
           <ThemeStylePickers config={config} onUpdate={handleUpdate} lang={lang} />
 
           <div className="flex items-center justify-between p-3 rounded-2xl bg-gray-50 dark:bg-gray-800/60 border border-gray-200/70 dark:border-gray-800">
@@ -53,7 +55,7 @@ export function StyleSettingsModal({ config, onChangeConfig, onClose, lang }: St
           </div>
         </div>
 
-        <div className="flex items-center justify-between pt-3 border-t border-gray-100 dark:border-gray-800">
+        <div className="flex items-center justify-between pt-3 border-t border-gray-100 dark:border-gray-800 shrink-0 p-5">
           <button
             onClick={() => onChangeConfig(DEFAULT_STYLE_CONFIG)}
             className="flex items-center gap-1.5 text-xs text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 font-semibold cursor-pointer"

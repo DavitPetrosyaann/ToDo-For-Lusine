@@ -2,6 +2,7 @@ import { X, Plus, Calendar } from 'lucide-react';
 import { TaskItem, Language } from '../types.ts';
 import { TRANSLATIONS } from '../i18n/translations.ts';
 import { DayTaskItem } from './DayTaskItem.tsx';
+import { useScrollLock } from '../hooks/useScrollLock.ts';
 
 interface DayTasksModalProps {
   dateStr: string;
@@ -19,6 +20,7 @@ export function DayTasksModal({
 }: DayTasksModalProps) {
   const t = TRANSLATIONS[lang];
   const completedCount = tasks.filter((t) => t.completed).length;
+  useScrollLock(true);
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-xs">
