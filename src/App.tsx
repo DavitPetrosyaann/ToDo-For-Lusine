@@ -11,6 +11,7 @@ import { PasswordGate } from './components/PasswordGate.tsx';
 import { AmbientBackdrop } from './components/AmbientBackdrop.tsx';
 import { FocusBanner } from './components/FocusBanner.tsx';
 import { DashboardContent } from './components/DashboardContent.tsx';
+import { TelegramReminderBar } from './components/TelegramReminderBar.tsx';
 
 export default function App() {
   const [unlocked, setUnlocked] = useState(() => isAppUnlocked());
@@ -61,6 +62,7 @@ export default function App() {
         onOpenStyleSettings={() => setIsStyleModalOpen(true)}
       />
       <main className="max-w-5xl w-full mx-auto px-4 pt-5 space-y-4 flex-1 relative z-10">
+        <TelegramReminderBar tasks={tasks} lang={lang} />
         <FocusBanner isFocusMode={isFocusMode} onExit={() => setIsFocusMode(false)} lang={lang} />
         <DashboardContent
           isFocusMode={isFocusMode} viewMode={viewMode} tasks={tasks} filteredTasks={filteredTasks}

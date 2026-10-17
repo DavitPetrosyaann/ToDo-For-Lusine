@@ -79,4 +79,7 @@ export const en: Dict = {
   addTaskForDate: '+ Add Task/Note',
   noTasksForDate: 'No tasks planned for this date yet.',
   allDayTasksDesc: (total, done) => `${total} tasks total (${done} completed)`,
+  telegramConnectCta: 'Get Telegram reminders 2 days before a task is due and on the due day.',
+  telegramConnectButton: 'Connect Telegram',
+  telegramConnected: 'Telegram reminders are on',
 };

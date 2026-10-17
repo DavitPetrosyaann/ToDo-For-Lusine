@@ -79,4 +79,7 @@ export const hy: Dict = {
   addTaskForDate: '+ Ավելացնել գործ',
   noTasksForDate: 'Այս օրվա համար դեռ գործեր չկան։',
   allDayTasksDesc: (total, done) => `Ընդհանուր ${total} գործ (${done}-ը կատարված)`,
+  telegramConnectCta: 'Ստացիր Telegram հիշեցումներ գործի ժամկետից 2 օր առաջ և վերջին օրը։',
+  telegramConnectButton: 'Միացնել Telegram',
+  telegramConnected: 'Telegram հիշեցումները միացված են',
 };

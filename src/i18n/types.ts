@@ -52,4 +52,7 @@ export interface Dict {
   addTaskForDate: string;
   noTasksForDate: string;
   allDayTasksDesc: (total: number, done: number) => string;
+  telegramConnectCta: string;
+  telegramConnectButton: string;
+  telegramConnected: string;
 }
