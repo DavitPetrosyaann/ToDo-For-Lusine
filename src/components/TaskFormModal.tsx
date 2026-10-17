@@ -1,7 +1,7 @@
 import { useState, FormEvent } from 'react';
 import { TaskItem, TaskCategory, PastelColor, Language } from '../types.ts';
 import { CATEGORIES } from '../data/categories.ts';
-import { PASTEL_COLORS } from '../data/colors.ts';
+import { ColorPickerRow } from './ColorPickerRow.tsx';
 import { TRANSLATIONS } from '../i18n/translations.ts';
 import { getDateOffset } from '../utils/dates.ts';
 import { useScrollLock } from '../hooks/useScrollLock.ts';
@@ -82,18 +82,7 @@ export function TaskFormModal({ initialTask, defaultDueDate, onSave, onClose, la
                 />
               </div>
             </div>
-            <div className="flex items-center gap-2 py-1">
-              <span className="text-xs font-bold text-gray-700 dark:text-gray-300">{t.colorLabel}:</span>
-              {(Object.keys(PASTEL_COLORS) as PastelColor[]).map((cKey) => (
-                <button
-                  type="button"
-                  key={cKey}
-                  onClick={() => setColor(cKey)}
-                  className={`w-6 h-6 rounded-full border-2 transition-all ${color === cKey ? 'border-emerald-600 scale-110' : 'border-transparent'}`}
-                  style={{ backgroundColor: PASTEL_COLORS[cKey].dotColor }}
-                />
-              ))}
-            </div>
+            <ColorPickerRow label={t.colorLabel} value={color} onChange={setColor} />
           </div>
 
           <div className="shrink-0 flex items-center justify-end gap-2 pt-3 px-5 pb-5 border-t border-gray-100 dark:border-gray-800">
